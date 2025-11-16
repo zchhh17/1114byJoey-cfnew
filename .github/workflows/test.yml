@@ -5,6 +5,9 @@ on:
     tags:
       - '*'  # 当任何标签被推送时触发
 
+permissions:
+  contents: write
+
 jobs:
   deploy-worker:
     runs-on: ubuntu-latest
@@ -62,7 +65,7 @@ jobs:
           prerelease: false
           files: Pages.zip
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GH_PAT }}
       
       - name: Output summary
         run: |
